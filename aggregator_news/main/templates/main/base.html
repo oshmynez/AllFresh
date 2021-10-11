@@ -1,0 +1,11 @@
+{% extends 'main/index.html' %}
+
+{% block article %}
+<a href="{{article.articleUrl}}" target="_blank" style="text-decoration: none; color: white">
+    <div class="item-grid">
+        <img src="{{ article.imageUrl }}" class="item-grid_img" title="{{article.title}}" alt="">
+        <div class="item-grid_img_title-bottom-left"><span style="bottom: 0;position: absolute">{{article.title|truncatechars:100 }}</span>
+        </div>
+    </div>
+</a>
+{% endblock article %}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://img.icons8.com/color/15/000000/neo.png" type="image/x-icon">
+    {% load static %}
+    <style>
+        @font-face {
+            font-family: Times_Modern_Bold;
+            src: url(static/TimesModernBold.ttf);
+        }
+
+        .nav-item {
+            white-space: nowrap;
+            margin-right: -5px;
+        }
+
+        .nav-link {
+            font-family: "Calibri";
+            font-size: 20px;
+            color: maroon;
+        }
+
+        .item-grid {
+            margin: 20px;
+            max-width: 535px;
+            max-height: 544px;
+            overflow: hidden;
+            position: relative;
+            height: 386px;
+            border-radius: 10px;
+        }
+
+        .item-grid_img {
+            filter: brightness(70%);
+            max-width: 100%;
+            transition: 0.3s;
+            object-fit: cover;
+            width: 100%;
+            height: inherit;
+            border-radius: 10px;
+        }
+
+        .item-grid_img:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+            filter: brightness(100%);
+
+            border-radius: 0;
+        }
+
+        .item-grid_img_title-bottom-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 30%;
+            width: 100%;
+            font-family: "Calibri Light";
+            font-size: 30px;
+            line-height: normal;
+            padding: 10px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+        }
+
+        .page-link {
+            color: black;
+        }
+    </style>
+    <title>AllFresh</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container-fluid">
+        <div style="margin-left: 10%">
+            <img src="https://img.icons8.com/color/48/000000/neo.png" alt="neo"/>
+        </div>
+        <a class="navbar-brand" style="margin-right: 3%; font-size: xx-large " href="/All/1/">AllFresh</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    {{ topic }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/All/1/">All</a></li>
+                    <li><a class="dropdown-item" href="/Business/1/">Business</a></li>
+                    <li><a class="dropdown-item" href="/Science/1/">Science</a></li>
+                    <li><a class="dropdown-item" href="/Sport/1/">Sport</a></li>
+                    <li><a class="dropdown-item" href="/Tech/1/">Tech</a></li>
+                    <li><a class="dropdown-item" href="/Other/1/">Other</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 15%">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #303384" target="_blank"
+                       href="https://myfin.by/bank/kursy_valjut_nbrb/usd">
+                        <img style="margin: 0 -5px 5px 0;" width="23px" height="23px"
+                             src="https://img.icons8.com/windows/23/000000/us-dollar--v1.png" alt="dollar"/>
+                        {{ currencies.0 }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #303384;" target="_blank"
+                       href="https://myfin.by/bank/kursy_valjut_nbrb/eur">
+                        <img style="margin: 0 -5px 5px 0;" width="23px" height="23px"
+                             src="https://img.icons8.com/small/23/000000/euro-pound-exchange.png" alt="euro"/>
+                        {{ currencies.1 }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #303384" target="_blank"
+                       href="https://myfin.by/bank/kursy_valjut_nbrb/rub">
+                        <img style="margin: 0 -5px 5px 0;" width="23px" height="23px"
+                             src="https://img.icons8.com/small/23/000000/ruble.png" alt="ruble"/>
+                        {{ currencies.2 }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #303384" target="_blank"
+                       href="https://myfin.by/crypto-rates/ethereum">
+                        <img style="margin: 0 -5px 5px 0;" width="23px" height="23px"
+                             src="https://img.icons8.com/ios/23/000000/ethereum.png" alt="ethereum"/>
+                        {{ currencies.3 }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #303384" target="_blank"
+                       href="https://myfin.by/crypto-rates/bitcoin">
+                        <img style="margin: 0 -5px 5px 0;" width="23px" height="23px"
+                             src="https://img.icons8.com/small/23/000000/bitcoin.png" alt="bitcoin"/>
+                        {{ currencies.4 }}</a>
+                </li>
+            </ul>
+            <form action="/search/1/" class="d-flex" style="width: 420px">
+                <input class="form-control me-2" name="searched-article" type="search" placeholder="Search"
+                       aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" style="width: 114px">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class=" d-flex justify-content-center" style="margin-top: 80px">
+    {% if notSearchedArticle == 0 %}
+    <div style="font-size: xx-large;font-family: 'Calibri Light'">
+        Данная статья отсутствует <br>
+        <span style="text-align: center;display: block">"{{search}}"</span>
+    </div>
+    {% endif%}
+    {% for articles in article_table %}
+    <div class="d-flex flex-column ">
+        {% for article in articles %}
+        {% block article %}{% endblock %}
+        {% endfor %}
+    </div>
+    {% endfor%}
+</div>
+
+<nav style="margin: 50px auto; width: fit-content">
+    <ul class="pagination  pagination-lg">
+        {% if search == 0 %}
+        {% for page in list_pages %}
+        {% if current_page == page %}
+        <li class="page-item"><a style="color: #ff0000" class="page-link" href="/main/{{ topic }}/{{ page }}/">{{page}}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="/{{ topic }}/{{ page }}/">{{page}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        {% for page in list_pages %}
+        {% if current_page == page %}
+        <li class="page-item"><a style="color: #ff0000" class="page-link" href="/search/{{ page }}/">{{page}}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="/search/{{ page }}/">{{page}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <span class="text-muted">&copy; 2021 Company, Inc, dimaformago281@gmail.com</span>
+        </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="mailto:dimaformago281@gmail.com?subject=Hi, IT|News"
+                                target="_blank"><img
+                    src="https://img.icons8.com/ios-filled/30/000000/feedback.png" alt="feedback"/></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://twitter.com/Darkhor50756990?s=09" target="_blank"><img
+                    src="https://img.icons8.com/material-rounded/30/000000/twitter-squared.png" alt="twitter"/></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/_.mitya_/" target="_blank"><img
+                    src="https://img.icons8.com/windows/30/000000/instagram-new.png" alt="instagram"/></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://vk.com/dimonfo" target="_blank"><img
+                    src="https://img.icons8.com/fluency-systems-filled/30/000000/vkontakte.png" alt="vkontakte"/></a>
+            </li>
+            <li class="ms-3"><a class="text-muted" href="https://github.com/oshmynez" target="_blank">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="github"/></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://www.linkedin.com/in/dima-formago-ababb4219/"
+                                target="_blank">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/linkedin.png" alt="linkedin"/></a></li>
+        </ul>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

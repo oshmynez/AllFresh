@@ -1,0 +1,10 @@
+{% load l10n %}
+<form action="" method="post">{% csrf_token %}
+    <div>
+        {% for obj in queryset %}
+        <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}" />
+        {% endfor %}
+        <input type="submit" name="post" value="yes" />
+        <input type="submit" name="post" value="no" />
+    </div>
+</form>
